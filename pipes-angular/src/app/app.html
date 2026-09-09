@@ -1,0 +1,166 @@
+<div class="app-layout">
+  <!-- BARRA LATERAL (CONTROLES) -->
+  <aside class="sidebar">
+    <div class="brand">
+      <h2>Transform Tools</h2>
+      <p>Panel interactivo de fórmulas</p>
+    </div>
+
+    <div class="controls-container">
+      <div class="control-box primary">
+        <label for="valInput">Valor Base (x / inicial):</label>
+        <input id="valInput" type="number" [(ngModel)]="valPrincipal" />
+      </div>
+
+      <div class="control-box">
+        <label for="secInput">Parámetro 2 (y / altura / tiempo):</label>
+        <input id="secInput" type="number" [(ngModel)]="paramSecundario" />
+      </div>
+
+      <div class="control-box">
+        <label for="terInput">Parámetro 3 (z / aceleración):</label>
+        <input id="terInput" type="number" [(ngModel)]="paramTerciario" />
+      </div>
+    </div>
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL (TARJETAS) -->
+  <main class="main-content">
+    <header class="top-header">
+      <h1>Resultados en Tiempo Real</h1>
+      <p class="subtitle">Modificando los parámetros en el panel lateral, los pipes de Angular actualizan las respuestas.</p>
+    </header>
+
+    <div class="cards-grid">
+      <!-- Card 1 -->
+      <article class="formula-card">
+        <div class="card-head">
+          <span class="tag math">Matemáticas</span>
+          <h3>{{ formulas[0].titulo }}</h3>
+        </div>
+        <code class="formula-display">P = 2({{ valPrincipal }} + {{ paramSecundario }})</code>
+        <p class="desc">{{ formulas[0].descripcion }}</p>
+        <div class="result">
+          <span class="result-val">{{ valPrincipal | perimetroRectangulo:paramSecundario | number:'1.2-2' }}</span> u
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="formula-card">
+        <div class="card-head">
+          <span class="tag math">Matemáticas</span>
+          <h3>{{ formulas[1].titulo }}</h3>
+        </div>
+        <code class="formula-display">A = ({{ valPrincipal }} × {{ paramSecundario }}) / 2</code>
+        <p class="desc">{{ formulas[1].descripcion }}</p>
+        <div class="result">
+          <span class="result-val">{{ valPrincipal | areaTriangulo:paramSecundario | number:'1.2-2' }}</span> u²
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="formula-card">
+        <div class="card-head">
+          <span class="tag physics">Física</span>
+          <h3>{{ formulas[2].titulo }}</h3>
+        </div>
+        <code class="formula-display">v = {{ valPrincipal }} + ({{ paramTerciario }} × {{ paramSecundario }})</code>
+        <p class="desc">{{ formulas[2].descripcion }}</p>
+        <div class="result">
+          <span class="result-val">{{ valPrincipal | velocidadFinal:paramTerciario:paramSecundario | number:'1.2-2' }}</span> m/s
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="formula-card">
+        <div class="card-head">
+          <span class="tag physics">Física</span>
+          <h3>{{ formulas[3].titulo }}</h3>
+        </div>
+        <code class="formula-display">V = {{ valPrincipal }}A × {{ paramSecundario }}Ω</code>
+        <p class="desc">{{ formulas[3].descripcion }}</p>
+        <div class="result">
+          <span class="result-val">{{ valPrincipal | leyOhm:paramSecundario | number:'1.2-2' }}</span> Volts
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="formula-card">
+        <div class="card-head">
+          <span class="tag physics">Física</span>
+          <h3>{{ formulas[4].titulo }}</h3>
+        </div>
+        <code class="formula-display">ρ = {{ valPrincipal }}kg / {{ paramSecundario }}m³</code>
+        <p class="desc">{{ formulas[4].descripcion }}</p>
+        <div class="result">
+          <span class="result-val">{{ valPrincipal | densidad:paramSecundario | number:'1.2-2' }}</span> kg/m³
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="formula-card">
+        <div class="card-head">
+          <span class="tag convert">Conversión</span>
+          <h3>{{ formulas[5].titulo }}</h3>
+        </div>
+        <code class="formula-display">°C = ({{ valPrincipal }}°F - 32) × 5/9</code>
+        <p class="desc">{{ formulas[5].descripcion }}</p>
+        <div class="result">
+          <span class="result-val">{{ valPrincipal | fahrenheitACelsius | number:'1.1-2' }}</span> °C
+        </div>
+      </article>
+
+      <!-- Card 7 -->
+      <article class="formula-card">
+        <div class="card-head">
+          <span class="tag health">Salud</span>
+          <h3>{{ formulas[6].titulo }}</h3>
+        </div>
+        <code class="formula-display">IMC = {{ valPrincipal }} / {{ paramSecundario }}²</code>
+        <p class="desc">{{ formulas[6].descripcion }}</p>
+        <div class="result">
+          <span class="result-val">{{ valPrincipal | imc:paramSecundario | number:'1.2-2' }}</span> 
+        </div>
+      </article>
+
+      <!-- Card 8 -->
+      <article class="formula-card">
+        <div class="card-head">
+          <span class="tag math">Matemáticas</span>
+          <h3>{{ formulas[7].titulo }}</h3>
+        </div>
+        <code class="formula-display">aₙ = {{ valPrincipal }} + ({{ paramSecundario }} - 1) × {{ paramTerciario }}</code>
+        <p class="desc">{{ formulas[7].descripcion }}</p>
+        <div class="result">
+          <span class="result-val">{{ valPrincipal | progresionAritmetica:paramSecundario:paramTerciario | number:'1.2-2' }}</span>
+        </div>
+      </article>
+
+      <!-- Card 9 -->
+      <article class="formula-card">
+        <div class="card-head">
+          <span class="tag math">Matemáticas</span>
+          <h3>{{ formulas[8].titulo }}</h3>
+        </div>
+        <code class="formula-display">S = ({{ valPrincipal }} - 2) × 180°</code>
+        <p class="desc">{{ formulas[8].descripcion }}</p>
+        <div class="result">
+          <span class="result-val">{{ valPrincipal | sumaAngulosPoligono | number }}</span>°
+        </div>
+      </article>
+
+      <!-- Card 10 -->
+      <article class="formula-card">
+        <div class="card-head">
+          <span class="tag convert">Conversión</span>
+          <h3>{{ formulas[9].titulo }}</h3>
+        </div>
+        <code class="formula-display">mi = {{ valPrincipal }} × 0.621371</code>
+        <p class="desc">{{ formulas[9].descripcion }}</p>
+        <div class="result">
+          <span class="result-val">{{ valPrincipal | kmAMillas | number:'1.3-3' }}</span> mi
+        </div>
+      </article>
+    </div>
+  </main>
+</div>

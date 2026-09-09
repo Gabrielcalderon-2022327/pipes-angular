@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:host {
+  --bg-body: #f8fafc;
+  --bg-surface: #ffffff;
+  --text-dark: #1e293b;
+  --text-gray: #64748b;
+  --border-light: #e2e8f0;
+  
+  /* Brand colors */
+  --primary: #4f46e5;
+  --primary-light: #e0e7ff;
+  --math-color: #0ea5e9;
+  --physics-color: #8b5cf6;
+  --convert-color: #f59e0b;
+  --health-color: #10b981;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-body);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 320px;
+  background-color: var(--bg-surface);
+  border-right: 1px solid var(--border-light);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.03);
+}
+
+.brand h2 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 0 0 0.25rem 0;
+  font-weight: 700;
+}
+
+.brand p {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.control-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-box label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.control-box input {
+  padding: 0.75rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background-color: var(--bg-body);
+  font-size: 1rem;
+  color: var(--text-dark);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.control-box input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+  background-color: var(--bg-surface);
+}
+
+.control-box.primary input {
+  border-color: var(--primary);
+  font-weight: bold;
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  padding: 3rem;
+  overflow-y: auto;
+}
+
+.top-header {
+  margin-bottom: 3rem;
+}
+
+.top-header h1 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.top-header .subtitle {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Grid & Cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.formula-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.formula-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.card-head h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Tags */
+.tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+}
+.tag.math { background-color: #e0f2fe; color: var(--math-color); }
+.tag.physics { background-color: #ede9fe; color: var(--physics-color); }
+.tag.convert { background-color: #fef3c7; color: var(--convert-color); }
+.tag.health { background-color: #d1fae5; color: var(--health-color); }
+
+/* Formula and Desc */
+.formula-display {
+  display: block;
+  background-color: var(--bg-body);
+  color: var(--primary);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.95rem;
+  text-align: center;
+  border: 1px dashed var(--border-light);
+  margin-bottom: 1rem;
+}
+
+.desc {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+}
+
+/* Result Box */
+.result {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.result-val {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Responsive adjustment */
+@media (max-width: 900px) {
+  .app-layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+  }
+}
